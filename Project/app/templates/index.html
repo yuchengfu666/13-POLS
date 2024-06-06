@@ -1,0 +1,425 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% load my_tag %}
+<head>
+    <meta charset="UTF-8">
+    <title>主界面</title>
+    <link rel="stylesheet"  href="{% static 'css/index.css' %}">
+    <link rel="stylesheet"  href="../static/css/reset.css">
+    <script src="{% static 'plugins/vue/vue.js' %}"></script>
+</head>
+<body>
+<div id="app">
+    <link rel="stylesheet" :href="'../static/css/theme/' + theme + '.css'">
+    <nav>
+        <div class="left">
+            <a href="/index">首页</a >
+            <a href="/news">新闻</a >
+            <a href="#">心情</a >
+            <a href="#">关于</a >
+            <a href="#">网站导航</a >
+        </div>
+        <div class="right">
+            <img  v-show="theme ==='light'"    src="../static/img/nav/moon-stars.svg" @click="setTheme('dark')">
+            <img  v-show="theme ==='dark'"     src="../static/img/nav/brightness-high.svg" @click="setTheme('light')">
+            <a href="#">登录</a >
+            <a href="#">[[msg]]</a >
+            <a href="#">注册</a >
+        </div>
+    </nav>
+    {% banner 'index' %}
+    <main>
+        {% block main %}
+            <div class="main">
+                <div class="left">
+                    <div class="boutique_article card">
+                        <div class="title">
+                            <h3>精选文章</h3>
+                            <div class="switch_article_category">
+                                <span :active="this_category === 'qianduan'" @click="switch_article_category('qianduan')">前端</span>
+                                <span :active="this_category === 'houduan'" @click="switch_article_category('houduan')">后端</span>
+                            </div>
+                        </div>
+                        <div class="body">
+                            <ul v-show="this_category === 'qianduan'" class="qianduan">
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p1.qhimg.com/t01a7e20297ee92fdd5.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p1.qhimg.com/t01a7e20297ee92fdd5.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p1.qhimg.com/t01a7e20297ee92fdd5.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p1.qhimg.com/t01a7e20297ee92fdd5.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p1.qhimg.com/t01a7e20297ee92fdd5.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p1.qhimg.com/t01a7e20297ee92fdd5.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul v-show="this_category === 'houduan'" class="houduan">
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p6.qhimg.com/t015c7bbab0a42e2cf9.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>后端</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p6.qhimg.com/t015c7bbab0a42e2cf9.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p6.qhimg.com/t015c7bbab0a42e2cf9.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p6.qhimg.com/t015c7bbab0a42e2cf9.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p6.qhimg.com/t015c7bbab0a42e2cf9.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p6.qhimg.com/t015c7bbab0a42e2cf9.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2>前端-Ajax</h2>
+                                        <p>AJAX（异步JavaScript和XML)是一种用于在不重新加载整个网页的情况下向服务器发送和接收数据的技术</p>
+                                        <span>2天前</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hot_list card">
+                        <div class="title">
+                            <h3>今日热搜</h3>
+                            <div>
+                                <a href="#">查看更多</a>
+                            </div>
+                        </div>
+                        <div class="body">
+                            主要内容区域
+                        </div>
+                    </div>
+                    <div class="all_article card">
+                        <div class="title">
+                            <h3>博客文章</h3>
+                        </div>
+                        <div class="body">
+                            <ul>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p0.qhimg.com/t01b8d976a9f12bd368.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2><a href="">React基本使用</a></h2>
+                                        <p>安装react包
+                                            python npm i react react-dom
+                                            使用react
+                                            react基本使用
+                                            //2.创建react元素 //参数一:元素名称 //参数二:元素python npm i react react-dom
+                                            使用react
+                                            react基本使用
+                                            //2.创建react元素 //参数一:元素名称 //参数二:元素</p>
+                                        <div class="article_info">
+                                            <span>
+                                                <img src="../static/img/main/clock.svg" alt="">2023-3-17
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/thumb-up.svg" alt="">71
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/eye.svg" alt="">486
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/chat.svg" alt="">71
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/star.svg" alt="">71
+                                            </span>
+
+                                        </div>
+                                        <a href="">查看详情</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="left">
+                                        <div>
+                                            <img src="http:///p0.qhimg.com/t01b8d976a9f12bd368.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <h2><a href="">React基本使用</a></h2>
+                                        <p>安装react包
+                                            python npm i react react-dom
+                                            使用react
+                                            react基本使用
+                                            //2.创建react元素 //参数一:元素名称 //参数二:元素python npm i react react-dom
+                                            使用react
+                                            react基本使用
+                                            //2.创建react元素 //参数一:元素名称 //参数二:元素</p>
+                                        <div class="article_info">
+                                            <span>
+                                                <img src="../static/img/main/clock.svg" alt="">2023-3-17
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/thumb-up.svg" alt="">71
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/eye.svg" alt="">486
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/chat.svg" alt="">71
+                                            </span>
+                                            <span>
+                                                <img src="../static/img/main/star.svg" alt="">71
+                                            </span>
+
+                                        </div>
+                                        <a href="">查看详情</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="advertisement card">
+                        <div class="title">
+                            <h3>独家广告</h3>
+                            <div>
+                                <a href="#">申请</a>
+                            </div>
+                        </div>
+                        <div class="body">
+                            主要内容区域
+                        </div>
+                    </div>
+                    <div class="tags card">
+                        <div class="title">
+                            <h3>标签云</h3>
+                        </div>
+                        <div class="body">
+                            <ul>
+                                <li>python</li>
+                                <li>java</li>
+                                <li>机器学习</li>
+                                <li>操作系统</li>
+                                <li>vue</li>
+                                <li>python</li>
+                                <li>java</li>
+                                <li>机器学习</li>
+                                <li>操作系统</li>
+                                <li>vue</li>
+                                <li>python</li>
+                                <li>java</li>
+                                <li>机器学习</li>
+                                <li>操作系统</li>
+                                <li>vue</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="site_info card">
+                        <div class="title">
+                            <h3>站点信息</h3>
+                        </div>
+                        <div class="body">
+                            主要内容区域
+                        </div>
+                    </div>
+                    <div class="links card">
+                        <div class="title">
+                            <h3>友情链接</h3>
+                        </div>
+                        <div class="body">
+                            主要内容区域
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </main>
+    <footer>
+        <div class="left">
+            <p class="thank">Thanks For</p>
+            <p class="site_info">
+                <span><img src="../static/img/footer/cloud-solid%20(1).svg" alt="" style="width: 20px">腾讯云服务器</span>
+                <span><img src="../static/img/footer/cloud-arrow-up-solid.svg" alt="" style="width: 20px">腾讯云ssl证书</span>
+            </p>
+            <p class="version">
+                <span >version</span>
+                <span>1.00</span>
+            </p>
+            <p>建站日期:2024-6-4</p>
+        </div>
+        <div class="right">
+            <div class="contact">
+                <div>
+                    <img class="svg"  src="../static/img/footer/qq_footer.svg" alt="">
+                    <img class="qq"   src="../static/img/footer/989876f4e7e23a6d84dbe9188afc4cd.jpg" alt="">
+                </div>
+                <div>
+                    <a href="https://space.bilibili.com/1634360176?spm_id_from=333.1007.0.0" target="_blank">
+                        <img class="svg"  src="../static/img/footer/bilibili2.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <p>
+                    联系邮箱:2935452269@qq.com
+            </p>
+        </div>
+    </footer>
+</div>
+<script>
+    new Vue({
+        el : '#app',
+        delimiters : ["[[", "]]"],
+        data: {
+            msg: 'Nandemonaiya',
+            theme: 'light',
+            this_category:'qianduan',
+        },
+        created(){
+            this.init_theme()
+        },
+        methods:{
+            init_theme(){
+                let theme =localStorage.getItem('theme')
+                if(theme){
+                    this.theme=theme
+                }
+            },
+            setTheme(themeName){
+                this.theme = themeName
+                localStorage.setItem('theme',themeName)
+            },
+            switch_article_category(categoryName){
+                this.this_category = categoryName
+            }
+        }
+    })
+    let menu_img = document.querySelectorAll('.dynamic_shuffl')
+
+    let menu_length = menu_img.length
+    let index = 0
+    let timer = null;
+    clearInterval(timer)
+    timer=setInterval(()=>{
+                index++
+                if(index === menu_length){
+                    index=0
+                }
+                for (let i of menu_img) {
+                    i.style.opacity = 0
+                }
+                menu_img[index].style.opacity = 1
+            },4000)
+
+
+</script>
+</body>
+</html>
